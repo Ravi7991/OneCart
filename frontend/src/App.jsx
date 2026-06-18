@@ -6,6 +6,7 @@ import Login from './pages/Login'
 import Nav from './component/Nav'
 import { userDataContext } from './context/UserContext'
 import About from './pages/About'
+import PrivacyPolicy from './pages/PrivacyPolicy'
 import Collections from './pages/Collections'
 import Product from './pages/Product'
 import Contact from './pages/Contact'
@@ -40,6 +41,9 @@ let location = useLocation()
       
         <Route path='/about' 
         element={userData ? <About/> : <Navigate to="/login" state={{from: location.pathname}} /> }/>
+
+        <Route path='/privacy-policy' 
+        element={userData ? <PrivacyPolicy/> : <Navigate to="/login" state={{from: location.pathname}} /> }/>
 
         <Route path='/collection' 
         element={userData ? <Collections/> : <Navigate to="/login" state={{from: location.pathname}} /> }/>

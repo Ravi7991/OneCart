@@ -3,7 +3,7 @@ import Title from '../component/Title'
 import CartTotal from '../component/CartTotal'
 import razorpay from '../assets/Razorpay.jpg'
 import { shopDataContext } from '../context/ShopContext'
-import { authDataContext } from '../context/authContext'
+import { authDataContext } from '../context/AuthContext.jsx'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -126,7 +126,7 @@ function PlaceOrder() {
   return (
     <div className='w-[100vw] min-h-[100vh] bg-gradient-to-l from-[#141414] to-[#0c2025] flex items-center justify-center flex-col md:flex-row gap-[50px]  relative'>
         <div className='lg:w-[50%] w-[100%] h-[100%] flex items-center justify-center  lg:mt-[0px] mt-[90px] '>
-            <form action="" onSubmit={onSubmitHandler} className='lg:w-[70%] w-[95%] lg:h-[70%] h-[100%]'>
+            <form action="" onSubmit={onSubmitHandler} className='lg:w-[70%] w-[95%] lg:h-[70%] h-[100%] relative flex flex-col gap-[14px] pb-[90px]'>
         <div className='py-[10px]'>
         <Title text1={'DELIVERY'} text2={'INFORMATION'}/>
         </div>
@@ -157,8 +157,8 @@ function PlaceOrder() {
           <input type="text" placeholder='Phone' className='w-[100%] h-[50px] rounded-md bg-slate-700 shadow-sm shadow-[#343434] placeholder:text-[white] text-[18px] px-[20px]' required onChange={onChangeHandler} name='phone' value={formData.phone} />
          
         </div>
-        <div>
-          <button type='submit' className='text-[18px] active:bg-slate-500 cursor-pointer bg-[#3bcee848] py-[10px] px-[50px] rounded-2xl text-white flex items-center justify-center gap-[20px] absolute lg:right-[20%] bottom-[10%] right-[35%] border-[1px] border-[#80808049] ml-[30px] mt-[20px]' >{loading? <Loading/> : "PLACE ORDER"}</button>
+        <div className='w-full flex justify-end mt-[10px]'>
+          <button type='submit' className='text-[18px] active:bg-slate-500 cursor-pointer bg-[#3bcee848] py-[10px] px-[50px] rounded-2xl text-white flex items-center justify-center gap-[20px] border-[1px] border-[#80808049]' >{loading? <Loading/> : "PLACE ORDER"}</button>
          </div> 
 
 
@@ -172,7 +172,7 @@ function PlaceOrder() {
                 <div className='py-[10px]'>
         <Title text1={'PAYMENT'} text2={'METHOD'}/>
         </div>
-        <div className='w-[100%] h-[30vh] lg:h-[100px] flex items-start mt-[20px] lg:mt-[0px] justify-center gap-[50px]'>
+        <div className='w-[100%] h-[30vh] lg:h-[100px] flex items-start mt-[20px] lg:mt-[0px] justify-center gap-[18px] flex-wrap'>
         <button onClick={()=>setMethod('razorpay')} className={`w-[150px] h-[50px] rounded-sm  ${method === 'razorpay' ? 'border-[5px] border-blue-900 rounded-sm' : ''}`}> <img src={razorpay} className='w-[100%] h-[100%] object-fill rounded-sm ' alt="" /></button>
         <button onClick={()=>setMethod('cod')} className={`w-[200px] h-[50px] bg-gradient-to-t from-[#95b3f8] to-[white] text-[14px] px-[20px] rounded-sm text-[#332f6f] font-bold ${method === 'cod' ? 'border-[5px] border-blue-900 rounded-sm' : ''}`}>CASH ON DELIVERY </button>
         </div>

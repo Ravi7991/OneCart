@@ -17,7 +17,23 @@ let app = express()
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
- origin:["http://localhost:5173" , "http://localhost:5174"],
+ origin:function(origin, callback){
+    const allowedOrigins = [
+      process.env.FRONTEND_URL,
+      process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null,
+      process.env.VERCEL_URL ? `http://${process.env.VERCEL_URL}` : null,
+    ].filter(Boolean)
+
+    if(
+      !origin ||
+      origin.startsWith("http://localhost:") ||
+      allowedOrigins.includes(origin)
+    ){
+      callback(null, true)
+    } else {
+      callback(new Error("Not allowed by CORS"))
+    }
+ },
  credentials:true
 }))
 
@@ -32,6 +48,7 @@ app.use("/api/order",orderRoutes)
 
 app.listen(port,()=>{
     console.log("Hello From Server")
+    console.log(port)
     connectDb()
 })
 

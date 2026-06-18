@@ -6,12 +6,13 @@ import { IoEyeOutline } from "react-icons/io5";
 import { IoEye } from "react-icons/io5";
 import { useState } from 'react';
 import { useContext } from 'react';
-import { authDataContext } from '../context/authContext';
+import { authDataContext } from '../context/AuthContext.jsx';
 import axios from 'axios';
 import { signInWithPopup } from 'firebase/auth';
 import { auth, provider } from '../../utils/Firebase';
 import { userDataContext } from '../context/UserContext';
 import Loading from '../component/Loading';
+import { toast } from 'react-toastify';
 
 function Login() {
     let [show,setShow] = useState(false)
@@ -38,7 +39,8 @@ function Login() {
             
         } catch (error) {
             console.log(error)
-            toast.error("User Login Failed")
+            setLoading(false)
+            toast.error(error.response?.data?.message || "User Login Failed")
         }
     }
      const googlelogin = async () => {
@@ -51,10 +53,11 @@ function Login() {
                 const result = await axios.post(serverUrl + "/api/auth/googlelogin" ,{name , email} , {withCredentials:true})
                 console.log(result.data)
                 getCurrentUser()
-            navigate("/")
-    
+                navigate("/")
+                toast.success("User Login Successful")
             } catch (error) {
                 console.log(error)
+                toast.error(error.response?.data?.message || "Google Login Failed")
             }
             
         }

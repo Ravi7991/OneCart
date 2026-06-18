@@ -10,12 +10,12 @@ import { IoMdHome } from "react-icons/io";
 import { HiOutlineCollection } from "react-icons/hi";
 import { MdContacts } from "react-icons/md";
 import axios from 'axios';
-import { authDataContext } from '../context/authContext';
+import { authDataContext } from '../context/AuthContext.jsx';
 import { shopDataContext } from '../context/ShopContext';
 function Nav() {
-    let {getCurrentUser , userData} = useContext(userDataContext)
+    let {getCurrentUser , userData, setUserData} = useContext(userDataContext)
     let {serverUrl} = useContext(authDataContext)
-    let {showSearch,setShowSearch,search,setSearch,getCartCount} = useContext(shopDataContext)
+    let {showSearch,setShowSearch,search,setSearch,getCartCount, setCartItem} = useContext(shopDataContext)
     let [showProfile,setShowProfile] = useState(false)
     let navigate = useNavigate()
 
@@ -24,6 +24,10 @@ function Nav() {
         try {
             const result = await axios.get(serverUrl + "/api/auth/logout" , {withCredentials:true})
             console.log(result.data)
+            
+            // Clear frontend user and cart state
+            if (setUserData) setUserData(null)
+            if (setCartItem) setCartItem({})
            
             navigate("/login")
         } catch (error) {

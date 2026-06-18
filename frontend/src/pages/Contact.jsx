@@ -14,11 +14,11 @@ function Contact() {
         <div className='lg:w-[50%] w-[80%] flex items-start justify-center gap-[20px]  flex-col mt-[20px] lg:mt-[0px]'>
         <p className='lg:w-[80%] w-[100%] text-[white] font-bold lg:text-[18px] text-[15px]'>Our Store</p>
         <p className='lg:w-[80%] w-[100%] text-[white] md:text-[16px] text-[13px]'>
-          <p>12345 Random Statiom</p>
-          <p>random city , state , India</p>
+          <p>Sector 126, Noida</p>
+          <p>Noida , Uttar Pradesh , India</p>
         </p>
         <p className='lg:w-[80%] w-[100%] text-[white] md:text-[16px] text-[13px]'>
-          <p>tel: +91-9876543210</p>
+          <p>tel: +91-7991955775</p>
           <p>Email: admin@onecart.com</p>
         </p>
         <p className='lg:w-[80%] w-[100%] text-[15px] text-[white] lg:text-[18px] mt-[10px] font-bold'>Careers at OneCart</p>

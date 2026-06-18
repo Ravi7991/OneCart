@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import logo from "../assets/logo.png"
 function Footer() {
   return (
@@ -21,10 +22,18 @@ function Footer() {
 
                     </div>
                     <ul>
-                         <li className='text-[15px] text-[#1e2223] hidden md:block cursor-pointer'>Home</li>
-                        <li className='text-[15px] text-[#1e2223] cursor-pointer '>About us</li>
-                        <li className='text-[15px] text-[#1e2223] hidden md:block cursor-pointer'>Delivery</li>
-                        <li className='text-[15px] text-[#1e2223] cursor-pointer'>Privacy Policy</li>
+                                                 <li className='text-[15px] text-[#1e2223] hidden md:block cursor-pointer hover:underline'>
+                                                    <Link to='/'>Home</Link>
+                                                </li>
+                                                <li className='text-[15px] text-[#1e2223] cursor-pointer hover:underline'>
+                                                    <Link to='/about'>About us</Link>
+                                                </li>
+                                                <li className='text-[15px] text-[#1e2223] hidden md:block cursor-pointer hover:underline'>
+                                                    <Link to='/placeorder'>Delivery</Link>
+                                                </li>
+                                                <li className='text-[15px] text-[#1e2223] cursor-pointer hover:underline'>
+                                                    <Link to='/privacy-policy'>Privacy Policy</Link>
+                                                </li>
                     </ul>
                 </div>
 
@@ -34,7 +43,7 @@ function Footer() {
 
                     </div>
                      <ul>
-                         <li className='text-[15px] text-[#1e2223] '>+91-9876543210</li>
+                         <li className='text-[15px] text-[#1e2223] '>+91-7991955775</li>
                         <li className='text-[15px] text-[#1e2223] '>contact@onecart.com</li>
                         <li className='text-[15px] text-[#1e2223] hidden md:block'>+1-123-456-7890</li>
                         <li className='text-[15px] text-[#1e2223] hidden md:block'>admin@onecart.com</li>
@@ -43,7 +52,7 @@ function Footer() {
 
         </div>
         <div className='w-[100%] h-[1px] bg-slate-400'></div>
-        <div className='w-[100%] h-[5vh] bg-[#dbfcfcec] flex items-center justify-center'>Copyright 2025@onecart.com-All Rights Reserved</div>
+        <div className='w-[100%] h-[5vh] bg-[#dbfcfcec] flex items-center justify-center'>Copyright 2026@onecart.com-All Rights Reserved</div>
       
     </div>
   )

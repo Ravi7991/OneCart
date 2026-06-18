@@ -10,7 +10,7 @@ const adminAuth = async (req,res,next) => {
     
     let verifyToken =  jwt.verify(token,process.env.JWT_SECRET)
 
-    if(!verifyToken){
+    if(!verifyToken || verifyToken.email !== process.env.ADMIN_EMAIL){
          return res.status(400).json({message:"Not Authorized Login Again, Invalid token"})
     }
     req.adminEmail = process.env.ADMIN_EMAIL
