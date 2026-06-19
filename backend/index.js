@@ -37,6 +37,13 @@ app.use(cors({
  credentials:true
 }))
 
+app.get("/", (req, res) => {
+  res.status(200).json({
+    message: "oneCart backend is running",
+    status: "ok"
+  })
+})
+
 app.use("/api/auth",authRoutes)
 app.use("/api/user",userRoutes)
 app.use("/api/product",productRoutes)
